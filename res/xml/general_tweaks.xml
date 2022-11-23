@@ -38,6 +38,13 @@
         android:summary="@string/use_games_spoof_summary" 
         android:defaultValue="true" />    
 
+    <!--Netflix -->
+    <com.derp.support.preferences.SystemSettingSwitchPreference
+        android:key="use_netflix_spoof"
+        android:title="@string/netflix_spoof_title"
+        android:summary="@string/netflix_spoof_summary"
+        android:defaultValue="false" />    
+
         <com.derp.support.preferences.SystemSettingSwitchPreference
             android:key="toast_icon"
             android:title="@string/toast_icon_title"
