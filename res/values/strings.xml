@@ -388,7 +388,7 @@
 
     <!-- Monet Engine -->
     <string name="monet_category">Monet</string>
-    <string name="monet_engine_title">Monet Engine</string>
+    <string name="monet_engine_title">Monet Theming</string>
     <string name="monet_engine_summary">Customise monet parameters</string>
     <string name="monet_engine_custom_color_title">Use custom color</string>
     <string name="monet_engine_custom_color_summary">Use custom color for monet engine instead of wallpaper colors</string>
@@ -398,6 +398,9 @@
     <string name="monet_engine_accurate_shades_summary">More accurate color shades at the cost of duller colors</string>
     <string name="monet_engine_chroma_factor_title">Colorfulness</string>
     <string name="monet_engine_linear_lightness_title">Use custom brightness scale</string>
+        <string name="monet_custom_color">Colors</string>
+    <string name="monet_custom_theming">Theming</string>   
+    <string name="monet_qs">Quick Settings</string>
 
     <!-- Tiles on secure keyguard -->
     <string name="use_tiles_on_secure_keyguard_title">Require unlocking to use sensitive tiles</string>
@@ -750,5 +753,11 @@
     <!-- Netflix Spooft -->
     <string name="netflix_spoof_title">Netflix spoof</string>
     <string name="netflix_spoof_summary">Spoof your device as different model for Netflix</string>
+    
+    <!-- Spoof Category -->
+    <string name="spoof_custom">Spoofing</string>
+
+    <!-- Lab -->
+     <string name="lab">Laboratory</string>
 
 </resources>
