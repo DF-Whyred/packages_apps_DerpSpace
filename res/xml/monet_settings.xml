@@ -54,7 +54,7 @@
         android:dependency="monet_engine_linear_lightness"
         android:defaultValue="200"
         android:max="1000"
-        settings:min="1"
+        settings:min="0"
         settings:interval="25"/>
 
     <com.derp.support.preferences.SecureSettingSwitchPreference
