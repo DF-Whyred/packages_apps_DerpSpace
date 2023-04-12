@@ -35,7 +35,7 @@
             android:key="disable_ripple_effect"
             android:title="@string/disable_fingerprint_ripple_effect_title"
             android:summary="@string/disable_fingerprint_ripple_effect_summary"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <org.derpfest.support.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_hide_status_bar"
@@ -59,7 +59,7 @@
             android:key="charging_animation"
             android:title="@string/charging_animation_title"
             android:summary="@string/charging_animation_summary"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
         <org.derpfest.support.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_battery_info"
