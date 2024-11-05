@@ -16,34 +16,41 @@
 
 package org.derpfest.derpspace.fragments;
 
+import android.app.ActivityManagerNative;
 import android.content.Context;
 import android.content.ContentResolver;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.os.RemoteException;
 import android.os.ServiceManager;
-import android.os.SystemProperties;
-import android.provider.Settings;
-import android.widget.Toast;
-
 import androidx.preference.Preference;
+import androidx.preference.ListPreference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.SwitchPreference;
+import android.provider.Settings;
+import android.util.Log;
+import android.view.WindowManagerGlobal;
+import android.view.IWindowManager;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import java.util.Locale;
+import android.text.TextUtils;
+import android.view.View;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.Utils;
 
 public class GeneralTweaks extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
+    private Preference mAlertSlider;
 
     private static final String ALERT_SLIDER_PREF = "alert_slider_notifications";
-    private static final String KEY_SPOOF = "use_photos_spoof";
-    private static final String SYS_SPOOF = "persist.sys.pixelprops.gphotos";
-
-    private Preference mAlertSlider;
-    private SwitchPreference mSpoof;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,15 +62,11 @@ public class GeneralTweaks extends SettingsPreferenceFragment implements OnPrefe
         final PreferenceScreen prefScreen = getPreferenceScreen();
         final Resources res = getResources();
 
-        mAlertSlider = (Preference) findPreference(ALERT_SLIDER_PREF);
+        mAlertSlider = (Preference) prefScreen.findPreference(ALERT_SLIDER_PREF);
         boolean mAlertSliderAvailable = res.getBoolean(
                 com.android.internal.R.bool.config_hasAlertSlider);
         if (!mAlertSliderAvailable)
             prefScreen.removePreference(mAlertSlider);
-
-        mSpoof = (SwitchPreference) findPreference(KEY_SPOOF);
-        mSpoof.setChecked(SystemProperties.getBoolean(SYS_SPOOF, true));
-        mSpoof.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -78,14 +81,6 @@ public class GeneralTweaks extends SettingsPreferenceFragment implements OnPrefe
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mSpoof) {
-            String value = ((Boolean) objValue) ? "1" : "0";
-            SystemProperties.set(SYS_SPOOF, value);
-            Toast.makeText(getActivity(),
-                    (R.string.photos_spoof_toast),
-                    Toast.LENGTH_LONG).show();
-            return true;
-        }
         return false;
     }
 }
